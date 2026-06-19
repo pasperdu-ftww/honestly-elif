@@ -830,7 +830,7 @@
     <div class="hero-portrait" id="hero-portrait">
       <img src="https://pub-bd1937786ce445ed93435b74610b5b73.r2.dev/Elif-LIFE.png" alt="Elif">
       <video id="hero-video" playsinline preload="metadata" style="display:none;">
-        <source src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/Elif.mp4" type="video/mp4">
+        <source src="https://pub-bd1937786ce445ed93435b74610b5b73.r2.dev/Elif-LIFE.mp4" type="video/mp4">
       </video>
       <button type="button" class="play-pill" onclick="playHeroVideo()"><span>▶ Meet Elif</span></button>
     </div>
@@ -951,7 +951,7 @@
       </a>
       <button type="button" class="cta-btn chat" onclick="openChatLightbox()" style="cursor:pointer;font:inherit;text-align:left;width:100%;">
         <div class="mode">CHAT</div>
-        <div class="label">Take 5 by chat</div>
+        <div class="label">Chat with Elif</div>
         <div class="descriptor">Back-and-forth in real time. Call her tonight, chat with her tomorrow — same Elif, same memory.</div>
       </button>
     </div>
@@ -986,7 +986,7 @@
   <div class="chat-lightbox-panel">
     <button type="button" class="chat-lightbox-close" onclick="closeChatLightbox()" aria-label="Close">&times;</button>
     <div class="chat-lightbox-eyebrow">CHAT WITH ELIF</div>
-    <h3 id="chat-lightbox-title">Take 5 by chat.</h3>
+    <h3 id="chat-lightbox-title">Chat with Elif.</h3>
     <p class="lead">Back-and-forth in real time. Same Elif, same memory — whether you call her tonight or chat with her tomorrow.</p>
     <p>This is where the anonymous chat experience lives. Three sessions with Elif before the gate fires, the same recognition contract as the voice line, and a written reflection delivered to your email when the conversation closes.</p>
     <div class="status-note">
@@ -1004,15 +1004,17 @@
     var stage = document.getElementById('hero-portrait');
     var video = document.getElementById('hero-video');
     if (!stage || !video) return;
+    var img = stage.querySelector('img');
+    if (img) img.style.display = '';
     stage.classList.add('playing');
     video.style.display = 'block';
+    video.currentTime = 0;
     video.play();
-    video.addEventListener('ended', function reset() {
+    video.onended = function () {
+      // Hold on the video's OWN final frame (its baked end-tile); show the pill to replay.
       stage.classList.remove('playing');
-      video.style.display = 'none';
-      video.currentTime = 0;
-      video.removeEventListener('ended', reset);
-    });
+      if (img) img.style.display = 'none';
+    };
   }
   function openChatLightbox() {
     var el = document.getElementById('chat-lightbox');
