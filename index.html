@@ -221,6 +221,31 @@
     letter-spacing: 0.02em;
   }
   .hero-meta strong { color: var(--sage-deep); font-weight: 500; }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .hero-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: var(--sans);
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 13px 22px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+  }
+  .hero-btn .big { font-family: var(--serif); font-size: 18px; font-weight: 500; line-height: 1.1; }
+  .hero-btn .small { font-size: 12px; letter-spacing: 0.03em; opacity: 0.82; margin-top: 3px; }
+  .hero-btn.call { background: var(--sage); color: var(--cream-bg); border: 1px solid var(--sage); }
+  .hero-btn.call:hover { background: var(--sage-deep); }
+  .hero-btn.chat { background: transparent; color: var(--warm-dark); border: 1px solid var(--warm-faint); }
+  .hero-btn.chat:hover { border-color: var(--sage); color: var(--bosphorus); }
+  @media (max-width: 720px) { .hero-actions { flex-direction: column; } .hero-btn { width: 100%; } }
   .hero-portrait {
     position: relative;
     aspect-ratio: 4 / 5;
@@ -912,7 +937,17 @@
       <div class="disposition">Take care of what matters.</div>
       <h1 class="through-line">Health is a journey, not an event.</h1>
       <p class="persona-subhead">I'm here for you,<br>to translate<br>what you don't yet have the words for,<br>during the times you need to find them.<br><br>I am here for the journey.<br>Travel to Istanbul.<br>A diagnosis you weren't expecting.<br>The process of - processing it all.</p>
-      <div class="hero-meta">2–20 minutes. Private. <strong>(315) 325-ELIF</strong>.</div>
+      <div class="hero-actions">
+        <a href="tel:+13153253543" class="hero-btn call">
+          <span class="big">Call Elif</span>
+          <span class="small">First 5 minutes free · no signup</span>
+        </a>
+        <button type="button" class="hero-btn chat" onclick="openChatLightbox()">
+          <span class="big">Chat with Elif</span>
+          <span class="small">Type instead · same memory</span>
+        </button>
+      </div>
+      <div class="hero-meta">2–20 minutes · Private · <strong>(315) 325-ELIF</strong></div>
     </div>
     <div class="hero-portrait" id="hero-portrait">
       <img src="https://pub-bd1937786ce445ed93435b74610b5b73.r2.dev/Elif-LIFE.png" alt="Elif">
@@ -1133,9 +1168,11 @@
     video.currentTime = 0;
     video.play();
     video.onended = function () {
-      // Hold on the video's OWN final frame (its baked end-tile); show the pill to replay.
+      // Return to the clean portrait (the baked end-tile has letterbox bars);
+      // the play pill reappears so they can replay.
       stage.classList.remove('playing');
-      if (img) img.style.display = 'none';
+      video.style.display = 'none';
+      if (img) img.style.display = '';
     };
   }
   function openChatLightbox() {
