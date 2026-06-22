@@ -634,6 +634,93 @@
     padding-bottom: 1px;
   }
 
+  /* ─── SUBSCRIBE / TIERS ─── */
+  .tiers-block { padding: 8px 0 56px; text-align: center; }
+  .tiers-intro {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--warm-mid);
+    max-width: 600px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  @media (max-width: 640px) { .tiers-grid { grid-template-columns: 1fr; } }
+  .tier {
+    background: var(--cream-card);
+    border: 1px solid var(--gold-faint);
+    border-radius: 6px;
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 12px rgba(45, 42, 36, 0.04);
+  }
+  .tier.featured { border-color: var(--gold); box-shadow: 0 4px 20px rgba(201, 165, 114, 0.16); }
+  .tier-name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--bosphorus);
+    margin-bottom: 4px;
+  }
+  .tier-price {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--warm-dark);
+    margin-bottom: 18px;
+  }
+  .tier-price span { font-size: 15px; color: var(--warm-quiet); font-style: italic; }
+  .tier-features { list-style: none; padding: 0; margin: 0 0 22px; flex: 1; }
+  .tier-features li {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    color: var(--warm-mid);
+    line-height: 1.5;
+    padding: 7px 0 7px 22px;
+    position: relative;
+    border-top: 1px solid var(--warm-faint);
+  }
+  .tier-features li:first-child { border-top: none; }
+  .tier-features li::before {
+    content: '·';
+    position: absolute;
+    left: 6px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .tier-btn {
+    display: block;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 13px 18px;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .tier-btn.primary { background: var(--sage); color: var(--cream-bg); border: 1px solid var(--sage); }
+  .tier-btn.primary:hover { background: var(--sage-deep); color: var(--cream-bg); }
+  .tier-btn.outline { background: transparent; color: var(--bosphorus); border: 1px solid var(--gold); }
+  .tier-btn.outline:hover { background: var(--gold-faint); color: var(--bosphorus); }
+  .tiers-topup {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--warm-quiet);
+    margin: 26px auto 0;
+    max-width: 560px;
+  }
+
   /* ─── CHAT LIGHTBOX (modal) ─── */
   /* Opens when CHAT CTA is clicked. Phase 6 will populate the body
      with the anonymous chat widget; for now it's a structural shell
@@ -955,16 +1042,51 @@
         <div class="descriptor">Back-and-forth in real time. Call her tonight, chat with her tomorrow — same Elif, same memory.</div>
       </button>
     </div>
-    <p class="cta-footer">First call is free — five minutes, no signup. <a href="#">Life with Purpose — $19.99/mo</a></p>
+    <p class="cta-footer">First call is free — five minutes, no signup. <a href="#subscribe">See what subscribing gives you ↓</a></p>
+  </section>
+
+  <!-- SUBSCRIBE / TIERS -->
+  <section class="tiers-block section" id="subscribe">
+    <div class="section-eyebrow">Beyond the first call</div>
+    <h2 class="section-heading"><em>When you're ready to stay.</em></h2>
+    <p class="tiers-intro">The first five minutes are free. After that, Elif becomes part of your practice — through Honestly, E, alongside the companions you choose and a living archive that remembers.</p>
+    <div class="tiers-grid">
+      <div class="tier featured">
+        <div class="tier-name">Life with Purpose</div>
+        <div class="tier-price">$19.99 <span>/mo</span></div>
+        <ul class="tier-features">
+          <li>Three companions of your choosing, plus Elif</li>
+          <li>60 voice minutes a month</li>
+          <li>Unlimited chat, anytime</li>
+          <li>Translation — Turkish, English, French</li>
+          <li>Pre-trip prep + recovery check-ins</li>
+          <li>Reflections in your chosen narrative lens</li>
+        </ul>
+        <a href="https://honestly-e.com" class="tier-btn primary">Subscribe at Honestly, E</a>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Whole Life</div>
+        <div class="tier-price">$49.99 <span>/mo</span></div>
+        <ul class="tier-features">
+          <li>All twelve companions — Elif and the whole family</li>
+          <li>120 voice minutes a month (about 30 a week)</li>
+          <li>Unlimited chat, anytime</li>
+          <li>Upload past journals, reflected back as Life Arc pieces</li>
+          <li>Your full sensory archive + annual reflection</li>
+        </ul>
+        <a href="https://honestly-e.com" class="tier-btn outline">Invest in Your Whole Life</a>
+      </div>
+    </div>
+    <p class="tiers-topup">Need more voice time? Add 30 minutes anytime for $9.99 — on any plan.</p>
   </section>
 
   <!-- ECOSYSTEM -->
   <section class="ecosystem">
     <div class="label">PART OF DESTA-NATION</div>
     <div class="links">
-      <a href="#">Honestly, E</a>
+      <a href="https://honestly-e.com">Honestly, E</a>
       <a href="https://pasperdu.com">Pas Perdu</a>
-      <a href="#">Desta-Nation</a>
+      <a href="https://desta-nation.com">Desta-Nation</a>
     </div>
   </section>
 
